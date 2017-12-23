@@ -15,27 +15,46 @@ import java.time.format.DateTimeFormatter;
  */
 public class OffsetDateTimeAdapter extends TypeAdapter&lt;OffsetDateTime&gt; {
 
-<span class="fc" id="L18">    public OffsetDateTimeAdapter() { }</span>
+    /** The default constructor. */
+<span class="fc" id="L19">    public OffsetDateTimeAdapter() { }</span>
 
+    /**
+     * &lt;p&gt;
+     * Writes out the given OffsetDateTime as ISO formatted string.
+     * &lt;/p&gt;
+     *
+     * @param out the JsonWriter where the data should be written to.
+     * @param value the OffsetDateTime to write.
+     * @throws IOException is the writing fails.
+     */
     @Override
-    public void write(JsonWriter out, OffsetDateTime value) throws IOException {
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (value == null) {</span>
-<span class="fc" id="L23">            out.nullValue();</span>
+    public void write(final JsonWriter out, final OffsetDateTime value) throws IOException {
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (value == null) {</span>
+<span class="fc" id="L33">            out.nullValue();</span>
         } else {
-<span class="fc" id="L25">            out.jsonValue(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(value));</span>
+<span class="fc" id="L35">            out.jsonValue(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(value));</span>
         }
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L37">    }</span>
 
+    /**
+     * &lt;p&gt;
+     * Reads in a value formatted in ISO format as OffsetDateTime.
+     * &lt;/p&gt;
+     *
+     * @param in the JsonReader to read from.
+     * @return the parsed OffsetDateTime.
+     * @throws IOException if the reading fails.
+     */
     @Override
-    public OffsetDateTime read(JsonReader in) throws IOException {
-<span class="fc" id="L31">        OffsetDateTime result = null;</span>
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (in.peek() == JsonToken.NULL) {</span>
-<span class="fc" id="L33">            in.nextNull();</span>
+    public OffsetDateTime read(final JsonReader in) throws IOException {
+<span class="fc" id="L50">        OffsetDateTime result = null;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (in.peek() == JsonToken.NULL) {</span>
+<span class="fc" id="L52">            in.nextNull();</span>
         } else {
-<span class="fc" id="L35">            String rawDate = in.nextString();</span>
-<span class="fc" id="L36">            result = OffsetDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(rawDate));</span>
+<span class="fc" id="L54">            String rawDate = in.nextString();</span>
+<span class="fc" id="L55">            result = OffsetDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(rawDate));</span>
         }
-<span class="fc" id="L38">        return result;</span>
+<span class="fc" id="L57">        return result;</span>
     }
 
 }
