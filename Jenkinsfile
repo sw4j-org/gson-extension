@@ -37,7 +37,7 @@ pipeline {
                         maven: 'Current Maven 3',
                         mavenLocalRepo: '${JENKINS_HOME}/maven-repositories/${EXECUTOR_NUMBER}/',
                         globalMavenSettingsConfig: '03c863c2-c19c-4ed5-bc3a-7650b8f73ecf') {
-                    sh "mvn -Dscmpublish.skipCheckin=true clean post-site scm-publish:publish-scm"
+                    sh "mvn -Dscmpublish.skipCheckin=true -DskipTests post-site scm-publish:publish-scm"
                 }
                 withCredentials([string(credentialsId: "f9c0bd13-de91-4d90-a292-8fd2d05c26b0",
                         variable: 'GH_TOKEN')]) {
