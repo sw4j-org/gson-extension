@@ -1,4 +1,4 @@
-package org.sw4j.gson.extension;
+package org.sw4j.gson.adapter;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
