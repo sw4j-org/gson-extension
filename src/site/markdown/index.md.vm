@@ -1,6 +1,0 @@
-#set($h1 = '#')
-#set($h2 = '##')
-
-$h1 Introduction
-
-This project is an extension to the [google gson](https://github.com/google/gson) library.
